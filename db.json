@@ -1,0 +1,21 @@
+{
+  "seminars": [
+    {
+      "id": "1",
+      "title": "React Basics",
+      "description": "Learn the basics of React.js.",
+      "location": "Jakarta",
+      "image": "/assets/images.jpg",
+      "bookmarked": false
+    },
+    {
+      "id": "2",
+      "title": "Advanced Node.js",
+      "description": "Deep dive into Node.js.",
+      "location": "Surabaya",
+      "image": "/assets/nodejs.jpg",
+      "bookmarked": false
+    }
+  ],
+  "bookmarks": []
+}
