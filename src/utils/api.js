@@ -17,18 +17,26 @@ export const fetchBookmarks = async () => {
 };
 
 export const addBookmark = async (seminarId) => {
+  // Ambil detail seminar berdasarkan ID
+  const seminarDetailsResponse = await fetch(`${apiUrl}/seminars/${seminarId}`);
+  if (!seminarDetailsResponse.ok) {
+    throw new Error("Failed to fetch seminar details");
+  }
+  const seminarDetails = await seminarDetailsResponse.json();
+
+  // Kirim seminarDetails ke endpoint /bookmarks
   const response = await fetch(`${apiUrl}/bookmarks`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ id: seminarId }), // Sesuaikan dengan format yang diterima oleh server
+    body: JSON.stringify(seminarDetails), // Kirim data lengkap seminar
   });
 
   if (!response.ok) {
     throw new Error("Failed to add bookmark");
   }
-  return await response.json(); // Opsional: jika server mengembalikan data terbaru
+  return await response.json();
 };
 
 export const removeBookmark = async (seminarId) => {
@@ -39,5 +47,18 @@ export const removeBookmark = async (seminarId) => {
   if (!response.ok) {
     throw new Error("Failed to remove bookmark");
   }
-  return await response.json(); // Opsional: jika server mengembalikan data terbaru
+  return await response.json(); 
+};
+
+/**
+ * Mengambil detail seminar berdasarkan ID.
+ * @param {string} seminarId
+ * @returns {Promise<object>}
+ */
+export const fetchBookmarkDetails = async (seminarId) => {
+  const response = await fetch(`${apiUrl}/seminars/${seminarId}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch seminar details");
+  }
+  return await response.json();
 };

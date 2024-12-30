@@ -5,6 +5,8 @@
       "title": "React Basics",
       "description": "Learn the basics of React.js.",
       "location": "Jakarta",
+      "time": "2025-12-1 02:00 PM",
+      "speaker": "John Doe",
       "image": "/assets/images.jpg",
       "bookmarked": false
     },
@@ -13,7 +15,19 @@
       "title": "Advanced Node.js",
       "description": "Deep dive into Node.js.",
       "location": "Surabaya",
+      "time": "2024-12-30 02:00 PM",
+      "speaker": "Simanta Paul",
       "image": "/assets/nodejs.jpg",
+      "bookmarked": false
+    },
+    {
+      "id": "3",
+      "title": "Syber Security",
+      "description": "Learn Syber Security",
+      "location": "Bandung",
+      "time": "2024-12-31 02:00 PM",
+      "speaker": "John",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjiOmKZGF_3unvieYbhYqHTSkl1NziXW65zg&s ",
       "bookmarked": false
     }
   ],

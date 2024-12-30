@@ -1,9 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RegisterPage from "../pages/RegisterPage";
 import HomePage from "../pages/HomePage";
 import BookmarkPage from "../pages/BookmarkPage";
+import AdminPage from "../pages/AdminPage"; // Import halaman AdminPage
 import Navbar from "../components/Navbar";
+import ProtectedRoute from "../routes/ProtectedRoute";
 
 const AppRoutes = () => {
   const isRegistered = !!localStorage.getItem("user");
@@ -13,16 +15,20 @@ const AppRoutes = () => {
       <Navbar isRegistered={isRegistered} />
       <div className="p-4">
         <Routes>
+          {/* Rute tanpa proteksi */}
           <Route path="/register" element={<RegisterPage />} />
+
+          {/* Rute dengan proteksi */}
           <Route
-            path="/home"
-            element={isRegistered ? <HomePage /> : <Navigate to="/register" />}
-          />
-          <Route
-            path="/bookmark"
-            element={isRegistered ? <BookmarkPage /> : <Navigate to="/register" />}
-          />
-          <Route path="*" element={<Navigate to="/register" />} />
+            element={<ProtectedRoute isRegistered={isRegistered} />}
+          >
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/bookmark" element={<BookmarkPage />} />
+            <Route path="/admin" element={<AdminPage />} /> {/* Rute AdminPage */}
+          </Route>
+
+          {/* Redirect default */}
+          <Route path="*" element={<RegisterPage />} />
         </Routes>
       </div>
     </Router>
